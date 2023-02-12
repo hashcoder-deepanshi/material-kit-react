@@ -2,6 +2,8 @@ import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
 import { Link, Container, Typography, Divider, Stack, Button } from '@mui/material';
+import {GoogleButton } from 'react-google-button'
+import { useNavigate } from 'react-router-dom';
 // hooks
 import useResponsive from '../hooks/useResponsive';
 // components
@@ -9,6 +11,10 @@ import Logo from '../components/logo';
 import Iconify from '../components/iconify';
 // sections
 import { LoginForm } from '../sections/auth/login';
+import useAuthState from "../Firebase/hooks"
+import {auth} from "../Firebase/firebase";
+import {UserAuth} from "../Firebase/AuthContext"
+
 
 // ----------------------------------------------------------------------
 
@@ -42,6 +48,22 @@ const StyledContent = styled('div')(({ theme }) => ({
 
 export default function LoginPage() {
   const mdUp = useResponsive('up', 'md');
+  const {user,initializing} = useAuthState(auth);
+  const {googleSignIn} = UserAuth();
+
+  const navigate = useNavigate();
+  const handleGoogleSignIn = async () =>{
+          try{
+           await googleSignIn();
+          }catch(error){
+              console.log(error);
+          }
+          navigate("/dashboard");
+        }
+        if(initializing){
+          return("loading...");
+        }
+      
 
   return (
     <>
@@ -77,20 +99,9 @@ export default function LoginPage() {
               Don’t have an account? {''}
               <Link variant="subtitle2">Get started</Link>
             </Typography>
-
-            <Stack direction="row" spacing={2}>
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
-              </Button>
-
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:facebook-fill" color="#1877F2" width={22} height={22} />
-              </Button>
-
-              <Button fullWidth size="large" color="inherit" variant="outlined">
-                <Iconify icon="eva:twitter-fill" color="#1C9CEA" width={22} height={22} />
-              </Button>
-            </Stack>
+            <div className="Google-Button">    
+               <GoogleButton  onClick={handleGoogleSignIn}/>
+            </div>
 
             <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>

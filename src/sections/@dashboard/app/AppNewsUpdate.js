@@ -61,10 +61,9 @@ function NewsItem({ news }) {
         <Link color="inherit" variant="subtitle2" underline="hover" noWrap>
           {title}
         </Link>
-
-        <Typography variant="body2" sx={{ color: 'text.secondary' }} noWrap>
-          {description}
-        </Typography>
+        <br/>
+        <Button size="small" color="success">ACCEPT</Button>
+        <Button size="small" color="error">DENY</Button>
       </Box>
 
       <Typography variant="caption" sx={{ pr: 3, flexShrink: 0, color: 'text.secondary' }}>

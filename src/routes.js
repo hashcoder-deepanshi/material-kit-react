@@ -4,11 +4,16 @@ import DashboardLayout from './layouts/dashboard';
 import SimpleLayout from './layouts/simple';
 //
 import BlogPage from './pages/BlogPage';
+import Chatroom from './pages/Chatroom';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
-import Page404 from './pages/Page404';
 import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
+import Feedback from "./pages/Feedback"
+import Profile from './pages/Profile';
+import Map from './pages/Map';
+import Track from './pages/Track';
+import UserDash from './pages/UserDash';
 
 // ----------------------------------------------------------------------
 
@@ -19,28 +24,44 @@ export default function Router() {
       element: <DashboardLayout />,
       children: [
         { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: 'app', element: <UserDash /> },
+        { path: 'user', element: <UserPage /> },
+        { path: 'products', element: <ProductsPage /> },
+        { path: 'blog', element: <BlogPage /> },
+        { path:"feedback", element:<Feedback/>},
+        { path:"profile", element:<Profile/>},
+        { path:"chatroom", element:<Chatroom/>},
+        { path:"map",element:<Map/>},
+        { path:"track",element:<Track/>}
+      ],
+    },
+    {
+      path: '/driverdashboard',
+      element: <DashboardLayout />,
+      children: [
+        { element: <Navigate to="/driverdashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
         { path: 'products', element: <ProductsPage /> },
         { path: 'blog', element: <BlogPage /> },
+        { path:"feedback", element:<Feedback/>},
+        { path:"profile", element:<Profile/>},
+        { path:"chatroom", element:<Chatroom/>}
       ],
     },
     {
       path: 'login',
-      element: <LoginPage />,
+      element: <LoginPage />
     },
     {
-      element: <SimpleLayout />,
-      children: [
-        { element: <Navigate to="/dashboard/app" />, index: true },
-        { path: '404', element: <Page404 /> },
-        { path: '*', element: <Navigate to="/404" /> },
-      ],
-    },
+      path: 'map',
+      element: <Map />
+    },    
     {
-      path: '*',
-      element: <Navigate to="/404" replace />,
+      path: 'track',
+      element: <Track />
     },
+
   ]);
 
   return routes;
