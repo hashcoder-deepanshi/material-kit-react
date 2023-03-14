@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Typography } from "@mui/material";
 import { addDoc, collection, onSnapshot, query, Timestamp, where,orderBy, doc, setDoc, updateDoc ,getDoc} from "firebase/firestore";
 import Chat from "../layouts/Chatroom/Chat";
 import User from "../layouts/Chatroom/User";
@@ -105,7 +106,7 @@ export default function Chatroom(){
             setText={setText}/>
             </>
             :(
-            <h3>Select a user to start a conversation</h3>
+            <Typography variant="h4" align="center">Select a user to start a conversation</Typography>
             )}
           </div>
           

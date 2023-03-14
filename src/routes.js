@@ -13,6 +13,7 @@ import Feedback from "./pages/Feedback"
 import Profile from './pages/Profile';
 import Map from './pages/Map';
 import Track from './pages/Track';
+import FamTrack from './pages/FamTrack';
 import UserDash from './pages/UserDash';
 
 // ----------------------------------------------------------------------
@@ -32,7 +33,9 @@ export default function Router() {
         { path:"profile", element:<Profile/>},
         { path:"chatroom", element:<Chatroom/>},
         { path:"map",element:<Map/>},
-        { path:"track",element:<Track/>}
+        { path:"track",element:<Track/>},
+        { path:"famtrack",element:<FamTrack/>}
+
       ],
     },
     {

@@ -3,6 +3,7 @@ import { useJsApiLoader , GoogleMap,Marker ,Autocomplete , DirectionsRenderer } 
 import { Button, IconButton, Skeleton, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import NearMeIcon from '@mui/icons-material/NearMe';
+import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import Modal from '@mui/material/Modal';
 
 const style = {
@@ -98,10 +99,16 @@ export default function Map(){
                        aria-describedby="modal-modal-description"
                     >
                     <Box sx={style} >
-                        <Typography id="modal-modal-title" variant="h6" component="h2">
-                        have a safe ride
+                        <Typography id="modal-modal-title" variant="h4" component="h2">
+                          Travel safe with us ! 
                         </Typography>
-                        <Button onClick={()=>alert("Your Cab is booked succesfully")}>Book this cab</Button>
+                        <br/>
+                        <DirectionsCarIcon fontSize="large" align="center" sx={{marginLeft:"140px"}}/> 
+                        <Typography variant="h6" align="center">Electric vehicle</Typography>
+                        <Typography variant="body1" align="center">Ms. Archana </Typography>
+                        
+                        <br/>
+                        <Button onClick={()=>alert("Your Cab is booked succesfully")}>Book this cab </Button>
 
                     </Box>
                     </Modal>

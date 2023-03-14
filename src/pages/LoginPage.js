@@ -92,7 +92,7 @@ export default function LoginPage() {
         <Container maxWidth="sm">
           <StyledContent>
             <Typography variant="h4" gutterBottom>
-              Sign in to Minimal
+              Sign in to Drive Me Safely
             </Typography>
 
             <Typography variant="body2" sx={{ mb: 5 }}>
